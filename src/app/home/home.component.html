@@ -1,0 +1,24 @@
+<h1>Welcome to your weather information app !</h1>
+
+<div class="weather">
+    <form #formcontrol="ngForm">
+        <label>Please enter your city name here:</label>
+        <input type="text" class="form-control" required name="city" placeholder="You city name..." [(ngModel)]="city">
+    </form>
+    <button (click)="save()" [disabled]="!formcontrol.form.valid">Click !</button>
+</div>
+
+<div class="weather" *ngIf="isDisplay">
+    <div class="weatherrow" style="font-size: 20px;margin-top: 10px;">Today's weather!</div>
+    <div class="weathericon" *ngIf="weatherinfo === 'Mist' || weatherinfo === 'Haze' || weatherinfo === 'Smoke'"><img src="http://openweathermap.org/img/wn/50d@2x.png"></div>
+    <div class="weathericon" *ngIf="weatherinfo==='Snow'"><img src="http://openweathermap.org/img/wn/13d@2x.png"></div>
+    <div class="weathericon" *ngIf="weatherinfo==='Thunderstorm'"><img src="http://openweathermap.org/img/wn/11d@2x.png"></div> 
+    <div class="weathericon" *ngIf="weatherinfo==='Rain' || weatherinfo==='Drizzle'"><img src="http://openweathermap.org/img/wn/09d@2x.png"></div>
+    <div class="weathericon" *ngIf="weatherinfo==='Clear'"><img src="http://openweathermap.org/img/wn/01d@2x.png"></div>
+    <div class="weathericon" *ngIf="weatherinfo==='Clouds'"><img src="http://openweathermap.org/img/wn/04d@2x.png"></div>
+    <div class="weatherrow" style="font-size: 30px;margin-top: 10px;">{{weatherData.name}},{{weatherData.sys.country}}</div>
+    <div class="weatherrow" style="font-size: 22px;margin-top: 6px;">{{weatherData.weather[0].description}}</div>
+    <div class="weatherrow" style="font-size: 15px;">Temperature: {{weatherData.main.temp}}&#8457;</div>
+    <div class="weatherrow" style="font-size: 15px;"> Feels like: {{weatherData.main.feels_like}}&#8457;</div>
+</div>
+
