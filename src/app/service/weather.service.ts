@@ -11,7 +11,7 @@ export class WeatherService {
   configUrl;
 
   constructor(private http:HttpClient) { 
-    this.configUrl='http://api.openweathermap.org/data/2.5/weather?q='
+    this.configUrl='https://api.openweathermap.org/data/2.5/weather?q='
   }
 
     getWeather(city){
